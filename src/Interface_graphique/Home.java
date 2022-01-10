@@ -17,7 +17,7 @@ import java.util.logging.*;
 public class Home implements ActionListener{
 		private JFrame frame;
 		private JTextField tuser;
-		private JTextField tpass;
+		private JPasswordField tpass;
 		private JComboBox combo;
         Connection conn= ConnexionSingleton.getInstance();
 
@@ -47,11 +47,12 @@ public class Home implements ActionListener{
 			frame.setResizable(false);
 			
 			JPanel panel = new JPanel();
-			panel.setBackground(Color.ORANGE);
+			panel.setBackground(new Color(120,188,225));
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
 			JLabel lab1 = new JLabel("Se Connecter");
+			lab1.setForeground(Color.WHITE);
 			lab1.setFont(new Font("Georgia", Font.BOLD, 40));
 			lab1.setBounds(56, 26, 327, 53);
 			lab1.setAlignmentY(1.0f);
@@ -60,45 +61,50 @@ public class Home implements ActionListener{
 			
 			JLabel lab2 = new JLabel("Utilisateur : ");
 			lab2.setFont(new Font("Georgia", Font.PLAIN, 20));
-			lab2.setBounds(56, 133, 161, 40);
+			lab2.setBounds(10, 129, 135, 33);
 			panel.add(lab2);
 			
 			JLabel lab3 = new JLabel("Mot de passe : ");
 			lab3.setFont(new Font("Georgia", Font.PLAIN, 20));
-			lab3.setBounds(56, 208, 161, 40);
+			lab3.setBounds(10, 204, 135, 33);
 			panel.add(lab3);
 			
 			tuser = new JTextField();
 			tuser.setForeground(Color.ORANGE);
-			tuser.setBounds(287, 133, 257, 40);
+			tuser.setBounds(155, 132, 185, 33);
 			panel.add(tuser);
 			tuser.setColumns(10);
 			
-			tpass = new JTextField();
+			tpass = new JPasswordField();
 			tpass.setForeground(Color.BLACK);
-			tpass.setBounds(287, 212, 257, 40);
+			tpass.setBounds(155, 207, 185, 33);
 			panel.add(tpass);
 			tpass.setColumns(10);
 			
 			JButton connect = new JButton("connecter");
-			connect.setBackground(Color.ORANGE);
-			connect.setForeground(new Color(0, 0, 139));
-			connect.setFont(new Font("Georgia", Font.BOLD, 30));
-			connect.setBounds(513, 389, 220, 40);
+			connect.setBackground(Color.WHITE);
+			connect.setForeground(new Color(14, 78, 104));
+			connect.setFont(new Font("Georgia", Font.BOLD, 25));
+			connect.setBounds(182, 354, 185, 40);
 			connect.addActionListener(this);
 			panel.add(connect);
 			
 			JLabel lab4 = new JLabel("Choisir votre espace : ");
 			lab4.setFont(new Font("Georgia", Font.PLAIN, 15));
-			lab4.setBounds(56, 316, 161, 30);
+			lab4.setBounds(10, 312, 165, 40);
 			panel.add(lab4);
 			
 			String[] table = {"Gérant","Pharmacien"};
 			
 		    combo = new JComboBox();
+		    combo.setFont(new Font("Georgia", Font.PLAIN, 15));
 			combo.setModel(new DefaultComboBoxModel(table));
-			combo.setBounds(268, 322, 115, 21);
+			combo.setBounds(10, 362, 135, 33);
 			panel.add(combo);
+			
+			JLabel lblNewLabel = new JLabel(new ImageIcon(Home.class.getResource("/interface_graphique/back-img.jpeg")));
+			lblNewLabel.setBounds(438, 0, 348, 463);
+			panel.add(lblNewLabel);
 		}
 		public void actionPerformed(ActionEvent evt) {                                     
 	     
@@ -109,7 +115,7 @@ public class Home implements ActionListener{
 	            if(e=="Pharmacien"){
 	                try {
 	                    //Class.forName("com.mysql.jdbc.Driver");
-	                    String sql="SELECT * FROM pharmacien WHERE cin=? AND password=?";
+	                    String sql="SELECT * FROM pharmaciens WHERE cin=? AND password=?";
 	                    PreparedStatement pst=conn.prepareStatement(sql);
 	                    System.out.println(tuser.getText()+ " : "+tpass.getText());
 	                    pst.setString(1,tuser.getText());
@@ -137,7 +143,7 @@ public class Home implements ActionListener{
 	                try {
 	                    Statement stm=conn.createStatement();
 	                    
-	                    String query="SELECT * FROM gérants WHERE cin='"+tuser.getText()+"' AND password='"+tpass.getText()+"'";
+	                    String query="SELECT * FROM gérants WHERE cin='"+tuser.getText()+"' AND password='"+tpass.getPassword()+"'";
 	                    ResultSet rst=stm.executeQuery(query);
 	                    if(rst.next()){
 	                        Gérant m=new Gérant();
@@ -157,4 +163,3 @@ public class Home implements ActionListener{
 	        	System.out.println("Not Connected");
 	    }                                    
 	    }
-

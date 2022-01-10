@@ -1,14 +1,13 @@
-package dao;
+package DAO;
 
-import java.util.List;
+import java.util.Vector;
 
 import models.Fournisseur;
 
-
-public interface FournisseurDao {
+public interface FournisseurDAO {
 	public void addFournisseur(Fournisseur fournisseur);
-	public List<Fournisseur> getAllFournisseurs();
+	public Vector<Vector<String>> getAllFournisseurs();
 	public Fournisseur getFournisseurByName(String nom , String prenom);
-	public boolean UpdateFournisseur(Fournisseur Fournisseur,String cin, String prenom);
-	public boolean DeleteFournisseur(String cin);
+	public boolean UpdateFournisseur(Fournisseur fournisseur, String cin);
+	public boolean DeleteFournisseur(String id_fournisseur);
 }
