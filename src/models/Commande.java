@@ -1,5 +1,7 @@
 package models;
 
+import java.sql.Date;
+
 public class Commande {
 
 	private String Id_commande;
@@ -7,12 +9,12 @@ public class Commande {
 	private int medicament;
 	private int Quantite_totale;
 	private double Prix_total;
-	private String date_commande;
+	private java.util.Date date_commande;
 	
 	
 	// constructor
 	public Commande(String id_commande, String id_fournisseur, int medicament, int quantite_totale,
-			double prix_total, String date_commande) {
+			double prix_total, Date date_commande) {
 //		super();
 		this.Id_commande = id_commande;
 		this.Id_fournisseur = id_fournisseur;
@@ -87,13 +89,13 @@ public class Commande {
 	}
 
 
-	public String getDate_commande() {
+	public java.util.Date getDate_commande() {
 		return date_commande;
 	}
 
 
-	public void setDate_commande(String date_commande) {
-		this.date_commande = date_commande;
+	public void setDate_commande(java.util.Date date) {
+		this.date_commande = date;
 	}
 	
 

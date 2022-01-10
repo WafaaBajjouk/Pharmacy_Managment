@@ -1,14 +1,16 @@
-package dao;
+package DAO;
 
-import java.util.List;
+
 
 
 import models.Medicament;
 
-public interface MedicamentDao {
+import java.util.Vector;
 
-	public void addCommande(Medicament medicament);
-	public List<Medicament> getAllMedicaments();
+
+public interface MedicamentDAO {
+	public void addMedicament(Medicament medicament);
+	public Vector<Vector<String>> getAllMedicaments();
 	public Medicament getMedicamentById(int id);
 	public boolean UpdateMedicament(Medicament medicament, int id);
 	public boolean DeleteMedicament(int id);

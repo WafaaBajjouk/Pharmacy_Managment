@@ -1,12 +1,12 @@
-package dao;
+package DAO;
 
-import java.util.List;
+import java.util.Vector;
 
 import models.Commande;
 
-public interface CommandeDao {
+public interface CommandeDAO {
 	public void addCommande(Commande commande);
-	public List<Commande> getAllCommandes();
+	public Vector<Vector<String>> getAllCommandes();
 	public Commande getCommandeById(String id);
 	public boolean UpdateCommande(Commande commande,String id);
 	public boolean DeleteCommande(String id);

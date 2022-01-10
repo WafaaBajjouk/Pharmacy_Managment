@@ -1,14 +1,15 @@
-package dao;
+package DAO;
 
 import java.util.List;
+import java.util.Vector;
 
 import models.Pharmacien;
 
-public interface PharmacienDao {
+public interface PharmacienDAO {
 	public void addPharmacien(Pharmacien pharmacien);
-	public List<Pharmacien> getAllPharmaciens();
+	public Vector<Vector<String>> getAllPharmaciens();
 	public Pharmacien getPharmacienById(String nom , String prenom);
-	public boolean UpdatePharmacien(Pharmacien pharmacien,String cin, String prenom);
+	public boolean UpdatePharmacien(Pharmacien pharmacien, String cin);
 	public boolean DeletePharmacien(String cin);
 
 }
